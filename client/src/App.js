@@ -11,12 +11,11 @@ const App = () => {
 
   const handleOffline = () => {
     setOffline(true);
-    setOnline(false);
   };
 
   const takePlayerName = () => {
     return (
-      <div className="fixed inset-0 flex justify-center items-center">
+      <div className="fixed inset-0 flex justify-center items-center backdrop-blur-sm">
         <div className="bg-white rounded-lg shadow-md p-6 w-96">
           <div className="text-center mt-4">
             <input
@@ -61,14 +60,14 @@ const App = () => {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="font-extrabold text-center bg-yellow-300 text-blue-700 text-xl md:text-3xl lg:text-4xl py-4 px-8 rounded-lg mt-2">
+    <div className="font-extrabold text-center bg-emerald-300 text-blue-700 text-xl md:text-3xl lg:text-4xl py-4 px-8 rounded-lg mt-2">
         Welcome to Tic-Tac-Toe game
       </div>
 
       {!online && !offline && (
         <div className="flex flex-col items-center justify-center border-2 border-gray-300 w-60 h-60 mt-4 bg-pink-400 rounded-md">
           <button
-            className="bg-green-400 hover:bg-green-600 text-white font-bold py-3 px-6 rounded mb-4 text-base"
+            className="bg-green-400 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg mb-4 text-base"
             onClick={() => {
               setModalOpen(true);
             }}
@@ -76,7 +75,7 @@ const App = () => {
             Play Online
           </button>
           <button
-            className="bg-blue-400 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded mb-2 text-base"
+            className="bg-blue-400 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg mb-2 text-base"
             onClick={handleOffline}
           >
             Play Offline
@@ -86,13 +85,7 @@ const App = () => {
 
       {modalOpen && takePlayerName()}
 
-      {/* {online && (
-        <div className="text-black font-bold mt-9">
-          <p>Waiting for opponent...</p>
-        </div>
-      )} */}
-
-      {/* {offline && <offline />} */}
+      {offline && <Offline />}
       {online && <Online firstplayer={firstplayer} />}
     </div>
   );
