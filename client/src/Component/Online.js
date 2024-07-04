@@ -110,7 +110,9 @@ useEffect(() => {
   }, [game]);
 
   useEffect(() => {
-    const newSocket = io("http://localhost:5000", { autoConnect: true });
+    const newSocket = io("https://tic-tac-toe-app-backend.onrender.com", {
+      autoConnect: true,
+    });
 
     newSocket.emit("request_to_play", { firstplayer: firstplayer });
 
